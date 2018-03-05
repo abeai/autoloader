@@ -1,0 +1,22 @@
+{
+  "name": "@abeai/autoloader",
+  "version": "1.0.0",
+  "description": "Autoload files as object",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abeai/autoloader.git"
+  },
+  "author": "Sam Artioli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abeai/autoloader/issues"
+  },
+  "homepage": "https://github.com/abeai/autoloader#readme",
+  "dependencies": {
+    "lodash": "4.17.5"
+  }
+}
