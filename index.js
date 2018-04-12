@@ -8,31 +8,31 @@ module.exports = {
     jsfiles: _jsfiles,
 };
 
-function _jsfiles(filename) {
+function _jsfiles(indexFile, options) {
 
     var autoLoad = {};
 
     var moduleFiles = fs.readdirSync(
         path.dirname(
-            fs.realpathSync(filename)
+            fs.realpathSync(indexFile)
         )
     );
 
     // eslint-disable-next-line
-    function notIndexOrUnderscoreAndJsOrDir(t) {
+    function notIndexOrUnderscoreAndJsOrDir(fileToLoad) {
 
         if (
-            fs.statSync(path.join(path.dirname(filename), t)).isDirectory()
-            && !t.match(/^_.*/)
-            && !t.match(/^lib$/)
+            fs.statSync(path.join(path.dirname(indexFile), fileToLoad)).isDirectory()
+            && !fileToLoad.match(/^_.*/)
+            && !fileToLoad.match(/^lib$/)
         ) {
             return true;
         }
 
         if (
-            t === 'index.js'
-            || t.match(/^_.*/)
-            || !t.match(/.*\.js(on)?$/)
+            fileToLoad === 'index.js'
+            || fileToLoad.match(/^_.*/)
+            || !fileToLoad.match(/.*\.js(on)?$/)
         ) {
             return false;
         }
@@ -40,8 +40,13 @@ function _jsfiles(filename) {
         return true;
     }
 
-    function requireMapFunction(t) {
-        autoLoad[t.replace(/\.js(on)?$/, '')] = require(path.join(path.dirname(filename), t));
+    function requireMapFunction(fileToLoad) {
+        if (!_.get(options, 'initObject')) {
+            return autoLoad[fileToLoad.replace(/\.js(on)?$/, '')]
+                = require(path.join(path.dirname(indexFile), fileToLoad));
+        }
+        return autoLoad[fileToLoad.replace(/\.js(on)?$/, '')]
+            = require(path.join(path.dirname(indexFile), fileToLoad))(options.initObject);
     }
 
     _.map(
