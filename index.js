@@ -23,7 +23,7 @@ function _jsfiles(indexFile, options) {
 
         if (
             fs.statSync(path.join(path.dirname(indexFile), fileToLoad)).isDirectory()
-            && !fileToLoad.match(/^_.*/)
+            && _.get(options, 'includeUnderscore') || !fileToLoad.match(/^_.*/)
             && !fileToLoad.match(/^lib$/)
         ) {
             return true;
@@ -31,7 +31,7 @@ function _jsfiles(indexFile, options) {
 
         if (
             fileToLoad === 'index.js'
-            || fileToLoad.match(/^_.*/)
+            || !_.get(options, 'includeUnderscore') && fileToLoad.match(/^_.*/)
             || !fileToLoad.match(/.*\.js(on)?$/)
         ) {
             return false;
