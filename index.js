@@ -65,8 +65,6 @@ function _jsfiles(indexFile, options) {
             return autoLoad[fileToLoad.replace(/\.js(on)?$/, '')]
                 = require(path.join(path.dirname(indexFile), fileToLoad));
         }
-        console.log(path.dirname(indexFile));
-        console.log(fileToLoad);
         return autoLoad[fileToLoad.replace(/\.js(on)?$/, '')]
             = require(path.join(path.dirname(indexFile), fileToLoad))(options.initObject);
     }
