@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/abeai/autoloader#readme",
   "dependencies": {
-    "lodash": "4.17.5"
+    "lodash": "4.17.11"
   }
 }
