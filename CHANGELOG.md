@@ -2,9 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-## 2.1.3 - Un-released
+## 2.1.3 - 03/21/2019
 
--   Upgrade `lodash` to `4.17.11`.
+-   Upgrade `lodash` to `4.17.11`. [ENG-791](https://abedev.atlassian.net/browse/ENG-791)
 
 ## 2.1.2 - 2018-04-18
 
