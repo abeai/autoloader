@@ -11,3 +11,4 @@ You will need access to the `@abeai` domain on npm.
 
     # This script will push the tag to the github repo and then publish to npm.
     ./scripts/publish.sh
+
